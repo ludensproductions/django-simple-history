@@ -636,6 +636,16 @@ class HistoricalRecords:
         if not created and hasattr(instance, "skip_history_when_saving"):
             return
         if not kwargs.get("raw", False):
+            historical_instance = instance.history.filter(pk=instance.pk)
+            # if this is a delete transaction,
+            # check if the record exists in the historical table
+            if historical_instance.exists():
+                old_record = historical_instance.latest('history_id')
+                # last record is not deleted
+                # but current record is deleted
+                if old_record.deleted is None and instance.deleted:
+                    # change history type to deleted when is soft deleted
+                    self.create_historical_record(instance, "-", using=using)
             self.create_historical_record(instance, created and "+" or "~", using=using)
 
     def post_delete(self, instance, using=None, **kwargs):

@@ -15,7 +15,7 @@ django-simple-history
 
 .. image:: https://img.shields.io/pypi/v/django-simple-history.svg
    :target: https://pypi.org/project/django-simple-history/
-   :alt: PyPI Version
+   :alt: PyPI Version.
 
 .. image:: https://api.codeclimate.com/v1/badges/66cfd94e2db991f2d28a/maintainability
    :target: https://codeclimate.com/github/jazzband/django-simple-history/maintainability
