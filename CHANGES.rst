@@ -7,6 +7,15 @@ Unreleased
 - Allow ``HistoricalRecords.m2m_fields`` as str (gh-1243)
 - Fixed ``HistoryRequestMiddleware`` deleting non-existent
   ``HistoricalRecords.context.request`` in very specific circumstances (gh-1256)
+- Added ``custom_historical_attrs`` to ``bulk_create_with_history()`` and
+  ``bulk_update_with_history()`` for setting additional fields on custom history models
+  (gh-1248)
+- Passing an empty list as the ``fields`` argument to ``bulk_update_with_history()`` is
+  now allowed; history records will still be created (gh-1248)
+- Added temporary requirement on ``asgiref>=3.6`` while the minimum required Django
+  version is lower than 4.2 (gh-1261)
+- Small performance optimization of the ``clean-duplicate_history`` command (gh-1015)
+- Support Simplified Chinese translation (gh-1281)
 
 3.4.0 (2023-08-18)
 ------------------
