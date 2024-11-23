@@ -19,6 +19,7 @@ Authors
 - Anton Kulikov (`bigtimecriminal <https://github.com/bigtimecriminal>`_)
 - Ben Lawson (`blawson <https://github.com/blawson>`_)
 - Benjamin Mampaey (`bmampaey <https://github.com/bmampaey>`_)
+- Berke Agababaoglu (`bagababaoglu <https://github.com/bagababaoglu>`_)
 - Bheesham Persaud (`bheesham <https://github.com/bheesham>`_)
 - `bradford281 <https://github.com/bradford281>`_
 - Brian Armstrong (`barm <https://github.com/barm>`_)
@@ -78,7 +79,8 @@ Authors
 - Jonathan Loo (`alpha1d3d <https://github.com/alpha1d3d>`_)
 - Jonathan Sanchez
 - Jonathan Zvesper (`zvesp <https://github.com/zvesp>`_)
-- Jordon Wing  (`jordonwii <https://github.com/jordonwii`_)
+- Jordan Hyatt (`JordanHyatt <https://github.com/JordanHyatt>`_)
+- Jordon Wing  (`jordonwii <https://github.com/jordonwii>`_)
 - Josh Fyne
 - Josh Thomas (`joshuadavidthomas <https://github.com/joshuadavidthomas>`_)
 - Keith Hackbarth
@@ -109,6 +111,7 @@ Authors
 - Nianpeng Li
 - Nick Träger
 - Noel James (`NoelJames <https://github.com/NoelJames>`_)
+- Ofek Lev (`ofek <https://github.com/ofek>`_)
 - Phillip Marshall
 - Prakash Venkatraman (`dopatraman <https://github.com/dopatraman>`_)
 - Rajesh Pappula
@@ -141,6 +144,7 @@ Authors
 - `ddusi <https://github.com/ddusi>`_
 - `DanialErfanian <https://github.com/DanialErfanian>`_
 - `Sridhar Marella <https://github.com/sridhar562345>`_
+- `Mattia Fantoni <https://github.com/MattFanto>`_
 
 Background
 ==========

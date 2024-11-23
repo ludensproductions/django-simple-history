@@ -4,6 +4,59 @@ Changes
 Unreleased
 ----------
 
+- Made ``skip_history_when_saving`` work when creating an object - not just when
+  updating an object (gh-1262)
+- Improved performance of the ``latest_of_each()`` history manager method (gh-1360)
+- Fixed issue with deferred fields causing DoesNotExist error (gh-678)
+- Added HistoricOneToOneField (gh-1394)
+
+3.7.0 (2024-05-29)
+------------------
+
+- Dropped support for Django 3.2, which reached end-of-life on 2024-04-01 (gh-1344)
+- Removed the temporary requirement on ``asgiref>=3.6`` added in 3.5.0,
+  now that the minimum required Django version is 4.2 (gh-1344)
+- Migrated package building from using the deprecated ``setup.py`` to using
+  ``pyproject.toml`` (with Hatchling as build backend);
+  ``setup.py`` has consequently been removed (gh-1348)
+- Added ``django>=4.2`` as an installation dependency, to mirror the minimum version
+  tested in our CI (gh-1349)
+
+3.6.0 (2024-05-26)
+------------------
+
+- Support custom History ``Manager`` and ``QuerySet`` classes (gh-1280)
+- Renamed the (previously internal) admin template
+  ``simple_history/_object_history_list.html`` to
+  ``simple_history/object_history_list.html``, and added the field
+  ``SimpleHistoryAdmin.object_history_list_template`` for overriding it (gh-1128)
+- Deprecated the undocumented template tag ``simple_history_admin_list.display_list()``;
+  it will be removed in version 3.8 (gh-1128)
+- Added ``SimpleHistoryAdmin.get_history_queryset()`` for overriding which ``QuerySet``
+  is used to list the historical records (gh-1128)
+- Added ``SimpleHistoryAdmin.get_history_list_display()`` which returns
+  ``history_list_display`` by default, and made the latter into an actual field (gh-1128)
+- ``ModelDelta`` and ``ModelChange`` (in ``simple_history.models``) are now immutable
+  dataclasses; their signatures remain unchanged (gh-1128)
+- ``ModelDelta``'s ``changes`` and ``changed_fields`` are now sorted alphabetically by
+  field name. Also, if ``ModelChange`` is for an M2M field, its ``old`` and ``new``
+  lists are sorted by the related object. This should help prevent flaky tests. (gh-1128)
+- ``diff_against()`` has a new keyword argument, ``foreign_keys_are_objs``;
+  see usage in the docs under "History Diffing" (gh-1128)
+- Added a "Changes" column to ``SimpleHistoryAdmin``'s object history table, listing
+  the changes between each historical record of the object; see the docs under
+  "Customizing the History Admin Templates" for overriding its template context (gh-1128)
+- Fixed the setting ``SIMPLE_HISTORY_ENABLED = False`` not preventing M2M historical
+  records from being created (gh-1328)
+- For history-tracked M2M fields, adding M2M objects (using ``add()`` or ``set()``)
+  used to cause a number of database queries that scaled linearly with the number of
+  objects; this has been fixed to now be a constant number of queries (gh-1333)
+
+3.5.0 (2024-02-19)
+------------------
+
+- Fixed ``FieldError`` when creating historical records for many-to-many fields with
+  ``to="self"`` (gh-1218)
 - Allow ``HistoricalRecords.m2m_fields`` as str (gh-1243)
 - Fixed ``HistoryRequestMiddleware`` deleting non-existent
   ``HistoricalRecords.context.request`` in very specific circumstances (gh-1256)
@@ -16,6 +69,8 @@ Unreleased
   version is lower than 4.2 (gh-1261)
 - Small performance optimization of the ``clean-duplicate_history`` command (gh-1015)
 - Support Simplified Chinese translation (gh-1281)
+- Added support for Django 5.0 (gh-1283)
+- Added support for Python 3.13 (gh-1289)
 
 3.4.0 (2023-08-18)
 ------------------
@@ -36,8 +91,6 @@ Unreleased
   ``HistoricalRecords.context.request``) under some circumstances (gh-1188)
 - Made ``HistoryRequestMiddleware`` async-capable (gh-1209)
 - Fixed error when setting ``table_name`` with ``inherit=True`` (gh-1195)
-- Fixed ``FieldError`` when creating historical records for many-to-many fields with
-  ``to="self"`` (gh-1218)
 
 3.3.0 (2023-03-08)
 ------------------
